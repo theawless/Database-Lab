@@ -1,0 +1,35 @@
+// 1
+match(n:YoutubeVideos) where(n.likecount > 100) return n
+
+// 2
+match(n:YoutubeVideos) return n order by n.viewcount desc limit 5
+
+// 3
+match(n:YoutubeVideos) where n.name = '1c4zo7_wzqc' set n.viewcount = 0
+
+// 4
+match (n:YoutubeVideos)-[r]-(q:YoutubeVideos) where n.likeCount > 100 and q.likeCount> 100 return count(r)
+
+// 5
+match (n:YoutubeVideos)-[r]-(q:YoutubeVideos)
+with distinct n as z
+   match (x:YoutubeVideos)-[]-(z)
+   with distinct x as l
+      match (a:YoutubeVideos)
+      return count(distinct a) - count(distinct l)
+
+// 6
+match (n:YoutubeVideos)-[r:`SAME_CHANNEL`]-(q:YoutubeVideos)
+with distinct n as z
+   match (x:YoutubeVideos)-[r:`SAME_CHANNEL`]-(z)
+   with distinct x as l
+      match (a:YoutubeVideos)
+      return count(distinct a) - count(distinct l)
+
+
+// 7
+match (n:YoutubeVideos)-[r:SAME_DESC]-(q:YoutubeVideos) where r.weightage > 4000  return count(r)
+
+// 8
+match (n:YoutubeVideos)-[r:SAME_DESC]-(q:YoutubeVideos) where r.weightage > 6000  delete r
+
