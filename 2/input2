@@ -1,0 +1,53 @@
+status
+insert 1
+insert 3
+insert 5
+insert 7
+status
+insert 11
+status
+insert 13
+status
+insert 15
+status
+insert 17
+status
+insert 19
+status
+delete 13
+status
+delete 19
+status
+insert 0
+insert 2
+status
+search 0
+insert 4
+status
+insert 6
+delete 0
+status
+delete 5
+status
+insert 8
+insert 10
+status
+insert 12
+status
+insert 14
+insert 16
+status
+insert 18
+insert 20
+status
+insert 22
+insert 24
+insert 26
+insert 28
+status
+insert 30
+status
+insert 32
+status
+insert 34
+status
