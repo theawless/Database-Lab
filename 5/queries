@@ -1,0 +1,14 @@
+use youtube
+
+// 1
+db.videos.count({"videoInfo.snippet.channelId":"UcttspZesZIDEwwpVIgoZtWQ"})
+// 2
+db.videos.count({"videoInfo.statistics.likeCount":{$gt:100}})
+// 3
+db.videos.count({"videoInfo.statistics.dislikeCount":{$lt:200}}) - db.videos.count({"videoInfo.statistics.dislikeCount":{$lte:100}})
+// 4
+db.videos.count({"videoInfo.snippet.title":{$regex:"modi"}})
+
+// 5
+//db.videos.find({},{"videoInfo.id":1, _id:0}).sort({"videoInfo.statistics.likeCount":1}).skip(db.videos.count()-5).sort({"videoInfo.statistics.likeCount":-1})
+db.videos.find({},{"videoInfo.id":1, _id:0}).sort({"videoInfo.statistics.likeCount":-1}).limit(5)
